@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Softs By Banabir</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2980, #26d0ce);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .main-heading {
+            font-size: 3.5rem;
+            color: white;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .sub-heading {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Software List */
+        .software-list {
+            display: grid;
+            gap: 25px;
+        }
+
+        .software-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 5px solid #1a2980;
+        }
+
+        .software-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .software-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .software-name {
+            font-size: 1.8rem;
+            color: #1a2980;
+            font-weight: 600;
+        }
+
+        .software-version {
+            background: #1a2980;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .software-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .software-info {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .info-item i {
+            color: #1a2980;
+            font-size: 1.1rem;
+        }
+
+        /* Button Styles */
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, #1a2980, #26d0ce);
+            color: white;
+            box-shadow: 0 5px 15px rgba(26, 41, 128, 0.3);
+        }
+
+        .btn-download:hover {
+            background: linear-gradient(135deg, #26d0ce, #1a2980);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 41, 128, 0.4);
+        }
+
+        .btn-instruction {
+            background: white;
+            color: #1a2980;
+            border: 2px solid #1a2980;
+        }
+
+        .btn-instruction:hover {
+            background: #1a2980;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(26, 41, 128, 0.3);
+        }
+
+        .btn-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-heading {
+                font-size: 2.5rem;
+            }
+            
+            .software-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-heading {
+                font-size: 2rem;
+            }
+            
+            .sub-heading {
+                font-size: 1rem;
+            }
+            
+            .software-card {
+                padding: 20px;
+            }
+            
+            .software-name {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Loading Animation */
+        .software-card.loading {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1 class="main-heading">Auto_Softs_By_Banabir</h1>
+            <p class="sub-heading">
+                My vision is to enhance our productivity. Read the instructions properly so that you don't messed up. Contact me if you face any kind of problem and you can also give me suggestion
+                for building softwares.
+            </p>
+        </header>
+
+        <!-- Software List Section -->
+        <main class="software-list">
+            <!-- Software 1 -->
+            <div class="software-card">
+                <div class="software-header">
+                    <h2 class="software-name">Month Converter From Full Date</h2>
+                    <img src="instructions/Number_To_Month.png" alt=""> <img src="instructions/Month_to_number.png" alt="">
+                </div>
+                
+                <p class="software-description">
+                    Convert Numeric Months to Your preferred language. You can also convert Alphatic months to Numeric.
+                </p>
+                
+                <div class="button-group">
+                    <a href="downloads/Month_Converter_Full&Final.exe" class="btn btn-download">
+                        <span class="btn-icon">⬇️</span>
+                        <span>Download Software</span>
+                    </a>
+                    <a onclick="openImage()" class="btn btn-instruction">
+                        <span class="btn-icon">📖</span>
+                        <span>View Instructions</span>
+                    </a>
+                    <script>
+                        function openImage() {
+                        window.open("instructions/instruction_month_converter.png", "_blank"); 
+                        // image.jpg = আপনার ইমেজের নাম
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <!-- Software 2 -->
+            <div class="software-card">
+                <div class="software-header">
+                    <h2 class="software-name">Combine Date From 3 invidual Field To 4th Field</h2>
+                    <img src="instructions/Date_3_Field_Combiner.png" alt="">
+                </div>
+                
+                <p class="software-description">
+                    You can write your Day, Month and Year into 3 individual field and combine them to 4th individual field.
+                </p>
+                
+                <div class="button-group">
+                    <a href="downloads/Date_3_Field_Combiner.exe" class="btn btn-download">
+                        <span class="btn-icon">⬇️</span>
+                        <span>Download Software</span>
+                    </a>
+                    <a onclick="openImage2()" class="btn btn-instruction">
+                        <span class="btn-icon">📖</span>
+                        <span>View Instructions</span>
+                    </a>
+                    <script>
+                        function openImage2() {
+                            window.open("instructions/3_field_date_combine_instructions.png", "_blank")
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <!-- Software 3 -->
+            <div class="software-card">
+                <div class="software-header">
+                    <h2 class="software-name">Web Automation Tool</h2>
+                    <span class="software-version">v1.8</span>
+                </div>
+                
+                <p class="software-description">
+                    Automate web browsing tasks, form filling, and data extraction.
+                    Works with Chrome, Firefox, and Edge browsers.
+                </p>
+                
+                <div class="software-info">
+                    <div class="info-item">
+                        <i>📦</i> <span>Size: 28 MB</span>
+                    </div>
+                    <div class="info-item">
+                        <i>📅</i> <span>Updated: Dec 20, 2023</span>
+                    </div>
+                    <div class="info-item">
+                        <i>⬇️</i> <span>Downloads: 1,550+</span>
+                    </div>
+                    <div class="info-item">
+                        <i>💻</i> <span>Windows 10/11</span>
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <a href="downloads/Web_Automation_Tool_v1.8.zip" class="btn btn-download">
+                        <span class="btn-icon">⬇️</span>
+                        <span>Download Software</span>
+                    </a>
+                    <a href="instructions/Web_Automation_Manual.pdf" class="btn btn-instruction">
+                        <span class="btn-icon">📖</span>
+                        <span>View Instructions</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Software 4 -->
+            <div class="software-card">
+                <div class="software-header">
+                    <h2 class="software-name">Bulk Email Sender</h2>
+                    <span class="software-version">v2.2</span>
+                </div>
+                
+                <p class="software-description">
+                    Send personalized emails in bulk with attachment support.
+                    Includes email tracking and scheduling features.
+                </p>
+                
+                <div class="software-info">
+                    <div class="info-item">
+                        <i>📦</i> <span>Size: 18 MB</span>
+                    </div>
+                    <div class="info-item">
+                        <i>📅</i> <span>Updated: Jan 30, 2024</span>
+                    </div>
+                    <div class="info-item">
+                        <i>⬇️</i> <span>Downloads: 720+</span>
+                    </div>
+                    <div class="info-item">
+                        <i>💻</i> <span>Windows 10/11</span>
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <a href="downloads/Bulk_Email_Sender_v2.2.zip" class="btn btn-download">
+                        <span class="btn-icon">⬇️</span>
+                        <span>Download Software</span>
+                    </a>
+                    <a href="instructions/Email_Sender_Guide.pdf" class="btn btn-instruction">
+                        <span class="btn-icon">📖</span>
+                        <span>View Instructions</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Software 5 -->
+            <div class="software-card">
+                <div class="software-header">
+                    <h2 class="software-name">Database Automation Kit</h2>
+                    <span class="software-version">v1.5</span>
+                </div>
+                
+                <p class="software-description">
+                    Automate database operations including backup, cleanup, and migration.
+                    Supports MySQL, PostgreSQL, and SQL Server.
+                </p>
+                
+                <div class="software-info">
+                    <div class="info-item">
+                        <i>📦</i> <span>Size: 56 MB</span>
+                    </div>
+                    <div class="info-item">
+                        <i>📅</i> <span>Updated: Feb 10, 2024</span>
+                    </div>
+                    <div class="info-item">
+                        <i>⬇️</i> <span>Downloads: 420+</span>
+                    </div>
+                    <div class="info-item">
+                        <i>💻</i> <span>Windows 10/11</span>
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <a href="downloads/Database_Automation_Kit_v1.5.zip" class="btn btn-download">
+                        <span class="btn-icon">⬇️</span>
+                        <span>Download Software</span>
+                    </a>
+                    <a href="instructions/Database_Kit_Manual.pdf" class="btn btn-instruction">
+                        <span class="btn-icon">📖</span>
+                        <span>View Instructions</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 Auto_Softs_By_Banabir. All rights reserved.</p>
+            <p>Contact: support@autosofts.com | Phone: +880 1234 567890</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple animation on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.software-card');
+            
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s, transform 0.5s';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+            
+            // Add click animation to buttons
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    if (!this.href) return;
+                    
+                    // Add click effect
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                    
+                    // For demo, show alert if file doesn't exist
+                    const href = this.getAttribute('href');
+                    if (href.includes('downloads/') || href.includes('instructions/')) {
+                        const fileName = href.split('/').pop();
+                        if (Math.random() > 0.7) { // Simulate missing file 30% of time
+                            e.preventDefault();
+                            alert(`Note: File "${fileName}" would be downloaded.\nFor now, this is a demo link.`);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
